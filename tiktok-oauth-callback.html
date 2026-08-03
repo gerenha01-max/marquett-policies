@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>TikTok OAuth - Código de autorização</title>
+  <style>
+    body { font-family: monospace; background: #111; color: #eee; padding: 40px; }
+    .box { background: #222; padding: 20px; border-radius: 8px; max-width: 700px; margin: 0 auto; }
+    .code { background: #000; color: #0f0; padding: 12px; border-radius: 4px; word-break: break-all; font-size: 16px; user-select: all; }
+    h1 { font-size: 18px; }
+    .label { color: #999; margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>Autorização do TikTok concluída</h1>
+    <div class="label">code (copie e envie para a Ísis):</div>
+    <div class="code" id="code">-</div>
+    <div class="label">state:</div>
+    <div class="code" id="state">-</div>
+    <div class="label">error (se houver):</div>
+    <div class="code" id="error">-</div>
+  </div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById('code').textContent = params.get('code') || '(nenhum code recebido)';
+    document.getElementById('state').textContent = params.get('state') || '-';
+    document.getElementById('error').textContent = params.get('error') || '(sem erro)';
+  </script>
+</body>
+</html>
